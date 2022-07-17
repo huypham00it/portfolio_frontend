@@ -46,7 +46,7 @@ const Work = () => {
         section
       </h2>
       <div className="app__work-filter">
-        {['UI/UX', 'Web App', 'Mobile App', 'React JS', 'All'].map((item, index) =>
+        {['HTML/CSS/JS', 'Node.js', 'MERN Stack', 'ReactJS', 'All'].map((item, index) =>
           (
             <div
               key={index}
