@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
 import ReactTooltip from 'react-tooltip';
 
+import { ThemeContext } from '../../context/ThemeProvider';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Skills.scss';
@@ -9,6 +10,7 @@ import './Skills.scss';
 const Skills = () => {
   const [experiences, setExperiences] = useState([]);
   const [skills, setSkills] = useState([]);
+  const {theme} = useContext(ThemeContext);
 
   useEffect(() => {
     const query = '*[_type == "experiences"]';
@@ -25,7 +27,7 @@ const Skills = () => {
 
   return (
     <>
-      <h2 className="head-text">Skills & Experiences</h2>
+      <h2 className={`head-text ${theme === 'dark' ? 'light-text' : ''}`}>Skills & Experiences</h2>
 
       <div className="app__skills-container">
         <motion.div className="app__skills-list">
@@ -53,7 +55,7 @@ const Skills = () => {
               key={experience.year}
             >
               <div className="app__skills-exp-year">
-                <p className="bold-text">{experience.year}</p>
+                <p className={`bold-text ${theme === 'dark' ? 'light-text' : ''}`}>{experience.year}</p>
               </div>
               <motion.div className="app__skills-exp-works">
                 {experience.works.map((work) => (
@@ -65,7 +67,7 @@ const Skills = () => {
                       data-tip
                       data-for={work.name}
                     >
-                      <h4 className="bold-text">{work.name}</h4>
+                      <h4 className={`bold-text ${theme === 'dark' ? 'light-text' : ''}`}>{work.name}</h4>
                       <p className="p-text">{work.company}</p>
                     </motion.div>
                     <ReactTooltip

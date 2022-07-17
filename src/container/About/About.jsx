@@ -1,11 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { motion } from 'framer-motion';
+import { ThemeContext } from '../../context/ThemeProvider';
 
 import { urlFor, client } from '../../client';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import './About.scss';
 
 const About = () => {
+    const {theme} = useContext(ThemeContext);
 
     const [abouts, setAbouts] = useState([]);
 
@@ -22,14 +24,14 @@ const About = () => {
 
     return (
         <>
-            <h2 className="head-text">
+            <h2 className={`head-text ${theme === 'dark' ? 'light-text' : ''}`}>
                 I Know That
                 <span> Good Dev</span>
                 <br />
                 means
                 <span> Good Person</span>
             </h2>
-            <div className="app__profiles">
+            <div className={`app__profiles ${theme === 'dark' ? 'light-text' : ''}`}>
                 {abouts.map((about, index) => (
                     <motion.div
                         whileInView = {{ opacity: 1 }}
@@ -39,7 +41,7 @@ const About = () => {
                         key={'about' + index}
                     >
                         <img src={urlFor(about.imgUrl)} alt={about.title} />
-                        <h2 className="bold-text" style={{ marginTop: 10 }}>{about.title}</h2>
+                        <h2 className={`bold-text ${theme === 'dark' ? 'light-text' : ''}`} style={{ marginTop: 10 }}>{about.title}</h2>
                         <p>{about.description}</p>
                     </motion.div>
                 ))}

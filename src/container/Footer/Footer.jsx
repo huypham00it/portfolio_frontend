@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 
+import { ThemeContext } from '../../context/ThemeProvider';
 import { images } from '../../constants';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { client } from '../../client';
@@ -10,6 +11,7 @@ const Footer = () => {
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const {theme} = useContext(ThemeContext);
 
   const { username, email, message } = formData;
 
@@ -38,7 +40,7 @@ const Footer = () => {
 
   return (
     <>
-      <h2 className="head-text">Take a coffe & chat with me</h2>
+      <h2 className={`head-text ${theme === 'dark' ? 'light-text' : ''}`}>Take a coffe & chat with me</h2>
       <div className="app__footer-cards">
         <div className="app__footer-card">
           <img src={images.email} alt="email" />

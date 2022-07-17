@@ -22,3 +22,19 @@
 a {
   text-decoration: none;
 }
+
+.bg-light__dark {
+  background-color: var(--white-color) !important;
+}
+
+.bg__dark {
+  background-color: var(--black-color) !important;
+}
+
+.bg2__dark {
+  background-color: #191919 !important;
+}
+
+.light-text {
+  color: var(--lightGray-color) !important;
+}

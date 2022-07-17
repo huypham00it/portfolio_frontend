@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 
+import { ThemeContext } from '../../context/ThemeProvider';
 import { images } from "../../constants";
 import { AppWrap } from "../../wrapper";
 import myCV from '../../assets/CV_Pham_Van_Huy_Fullstack_Developer.pdf'
@@ -20,6 +21,8 @@ const scaleVariants = {
 };
 
 const Header = () => {
+  const {theme} = useContext(ThemeContext);
+
   const particlesInit = async (main) => {
     await loadFull(main);
   };
@@ -30,12 +33,8 @@ const Header = () => {
         <Particles
           id="tsparticles"
           init={particlesInit}
+          className={theme}
           options={{
-            background: {
-              color: {
-                value: "transparent",
-              },
-            },
             fpsLimit: 120,
             interactivity: {
               events: {
@@ -64,10 +63,10 @@ const Header = () => {
             },
             particles: {
               color: {
-                value: "#0d47a1",
+                value: '#6b7688',
               },
               links: {
-                color: "#0d47a1",
+                color: '#6b7688',
                 distance: 150,
                 enable: true,
                 opacity: 0.5,
@@ -83,7 +82,7 @@ const Header = () => {
                   default: "bounce",
                 },
                 random: false,
-                speed: 1,
+                speed: 0.5,
                 straight: false,
               },
               number: {
@@ -112,17 +111,17 @@ const Header = () => {
           className="app__header-info"
         >
           <div className="app__header-badge">
-            <div className="badge-cmp app__flex">
+            <div className={`badge-cmp app__flex bg-light__${theme}`}>
               <span>👋</span>
               <div style={{ marginLeft: 20 }}>
-                <p className="p-text">Hello, I am</p>
-                <h1 className="head-text">Huy Pham</h1>
+                <p className={`p-text`}>Hello, I am</p>
+                <h1 className={`head-text`}>Huy Pham</h1>
               </div>
             </div>
-            <div className="tag-cmp app__flex">
+            <div className={`tag-cmp app__flex bg-light__${theme}`}>
               <p className="p-text">Full Stack Developer</p>
             </div>
-            <div className="tag-cmp app__flex download-btn">
+            <div className={`tag-cmp app__flex download-btn bg-light__${theme}`}>
               <a href={myCV} download="CV_Pham_Van_Huy.pdf" className="p-text">Download CV</a>
             </div>
           </div>

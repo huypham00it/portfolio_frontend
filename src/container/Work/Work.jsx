@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { AiFillEye, AiFillGithub } from 'react-icons/ai';
 import { motion } from 'framer-motion';
 
+import { ThemeContext } from '../../context/ThemeProvider';
 import { AppWrap, MotionWrap } from '../../wrapper';
 import { urlFor, client } from '../../client';
 import './Work.scss';
 
 const Work = () => {
-
+  const {theme} = useContext(ThemeContext);
   const [activeFilter, setActiveFilter] = useState('All');
   const [animateCard, setAnimateCard] = useState({ y: 0, opacity: 1});
   const [works, setWorks] = useState([]);
@@ -40,7 +41,7 @@ const Work = () => {
 
   return (
     <>
-      <h2 className="head-text">
+      <h2 className={`head-text ${theme === 'dark' ? 'light-text' : ''}`}>
         My Creative
         <span> Portfolio </span>
         section
